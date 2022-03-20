@@ -8,7 +8,10 @@ package com.isep.rpg;
   }
 
   void attack(Enemy e){
+   System.out.println("enemy's lifepoints reduced from "+e.lifePoints);
    e.lifePoints--;
+   System.out.print(" to "+e.lifePoints);
+
   }
 
   void defend(){
