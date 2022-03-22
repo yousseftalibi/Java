@@ -16,11 +16,15 @@ class Warrior extends Hero {
 
      }
 
-    void attack(Enemy e){
-        System.out.println("enemy's lifepoints reduced from "+e.lifePoints);
-        e.lifePoints--;
-        System.out.print(" to "+e.lifePoints);
-
+    void attack(Enemy e) {
+        if(e.lifePoints>0){
+            System.out.print("Enemy's lifepoints reduced from " + e.lifePoints);
+            e.lifePoints--;
+            System.out.println(" to " + e.lifePoints);
+        }
+        else {
+            System.out.println("Enemy defeated");
+        }
     }
     void defend() {
         if (this.armor > 0) {
@@ -32,19 +36,15 @@ class Warrior extends Hero {
             this.lifePoints--;
             System.out.println(" to " + this.lifePoints);
         }
-
     }
-     void useConsumable(){
 
-        String food = super.inputParser.scanConsumable();
+    void eat(){
+        this.lifePoints = lifePoints + this.lembas.get(lembas.size()-1).lifePointsAdded;
+        this.lembas.remove(lembas.size()-1);
+    }
 
-        for (int i=0; i<super.lembas.size()-1; i++){
-            if(super.lembas.get(i).name.equals(food)){
-                this.lifePoints++;
-                super.lembas.remove(super.lembas.get(i));
-            }
-        }
-        inputParser.closeScanner();
-
-     }
+    void drink(){
+        this.armor = armor + this.potions.get(potions.size()-1).pointsAdded;
+        this.potions.remove(potions.size()-1);
+    }
 }

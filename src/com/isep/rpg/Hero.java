@@ -15,7 +15,8 @@ import java.util.List;
 
      abstract void attack(Enemy e);
      abstract void defend();
-     abstract void useConsumable();
+     abstract void eat();
+     abstract void drink();
 
 
 }
