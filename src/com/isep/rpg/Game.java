@@ -68,7 +68,7 @@ public class Game {
     }
 
     public void gameStatus(Hero h, Enemy enemy){
-        System.out.println("Game started, you are:"+ h.getClass().getName());
+        System.out.println( h.getClass().getSimpleName()+" is playing");
         System.out.println("Your state is :\n"+ h.armor + " armor, "+h.lifePoints+" life points, "+ h.weaponDamage+ " weapon damage");
         System.out.println("You have the following consumables: ");
        for (Food food: h.lembas) {
@@ -77,9 +77,10 @@ public class Game {
         for (Potion potion: h.potions) {
             System.out.println("Potion "+potion.name + " adds "+ potion.pointsAdded +"  points");
         }
-        System.out.println("Your enemy is "+enemy.getClass().getName() + " with "+ enemy.lifePoints+ " life points");
+        System.out.println("Your enemy is "+enemy.getClass().getSimpleName() + " with "+ enemy.lifePoints+ " life points");
 
     }
+
     public void generateCombat(){
         ArrayList<Hero> h = ChooseHero();
         String action;
@@ -88,30 +89,40 @@ public class Game {
         for(int i= 0; i<h.size(); i++) {
             Hero hero = h.get(i);
             while (hero.lifePoints > 0) {
-                gameStatus(hero, enemy);
 
-                action = inputParser.scanAction();
-                switch (action) {
-                    case "Attack": {
-                        hero.attack(enemy);
-                        break;
-                    }
-                    case "Defend": {
-                        hero.defend();
-                        break;
+                    gameStatus(hero, enemy);
+
+                    action = inputParser.scanAction();
+                    switch (action) {
+                        case "Attack": {
+                            hero.attack(enemy);
+                            break;
+                        }
+                        case "Defend": {
+                            hero.defend();
+                            break;
+                        }
+
+                        case "Eat": {
+                            if (hero.lembas.size() > 0) {
+                                hero.eat();
+                            } else {
+                                System.out.println("You are out of food");
+                            }
+                            break;
+                        }
+                        case "Drink": {
+                            if (hero.potions.size() > 0) {
+                                hero.drink();
+                            } else {
+                                System.out.println("You are out of potions");
+                            }
+                            break;
+                        }
                     }
 
-                    case "Eat": {
-                        System.out.println("you ate");
-                        break;
-                    }
-                    case "Drink": {
-                        System.out.println("you drank");
-                        break;
-                    }
-                }
+                System.out.println(Hero.class.getName() + " has lost, Next player!");
             }
-            System.out.println(Hero.class.getName()+" has lost, Next player!");
         }
     }
 

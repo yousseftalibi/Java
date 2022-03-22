@@ -7,17 +7,19 @@ package com.isep.rpg;
          super.lifePoints = 6;
          super.armor = 7;
          super.weaponDamage = 7;
-         super.lembas.add(new Food("apple", 2));
-         super.lembas.add(new Food("Orange", 3));
+         super.lembas.add(new Food("Apple", 2));
          super.potions.add(new Potion("Red", 2));
-         super.potions.add(new Potion("Blue", 3));
      }
 
      void attack(Enemy e) {
-         System.out.println("enemy's lifepoints reduced from " + e.lifePoints);
+         if(e.lifePoints>0){
+         System.out.print("Enemy's lifepoints reduced from " + e.lifePoints);
          e.lifePoints--;
-         System.out.print(" to " + e.lifePoints);
-
+         System.out.println(" to " + e.lifePoints);
+         }
+         else {
+             System.out.println("Enemy defeated");
+         }
      }
 
      void defend() {
@@ -30,10 +32,16 @@ package com.isep.rpg;
              this.lifePoints--;
              System.out.println(" to " + this.lifePoints);
          }
-
      }
 
-     void useConsumable(){
 
+     void eat(){
+         this.lifePoints = lifePoints + this.lembas.get(lembas.size()-1).lifePointsAdded;
+         this.lembas.remove(lembas.size()-1);
+     }
+
+     void drink(){
+         this.armor = armor + this.potions.get(potions.size()-1).pointsAdded;
+         this.potions.remove(potions.size()-1);
      }
 }
