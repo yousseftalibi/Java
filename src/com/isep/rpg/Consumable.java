@@ -1,7 +1,4 @@
 package com.isep.rpg;
 
- public interface Consumable {
-
-
-
+public interface Consumable {
 }

@@ -10,9 +10,9 @@ public class InputParser {
  public String scanHeroName(){
    System.out.println("please choose your Hero: Hunter, Warrior, Mage, Healer");
 
-   /*if( sc.nextLine()!="Hunter" && sc.nextLine()!="Warrior"  && sc.nextLine()!="Mage" && sc.nextLine()!="Healer"){
+   if( !sc.nextLine().equals("Hunter") && !sc.nextLine().equals("Warrior")  && !sc.nextLine().equals("Mage") && !sc.nextLine().equals("Healer")){
      System.out.println("Error");
-    }*/
+    }
     return sc.nextLine();
   }
 
@@ -33,13 +33,10 @@ public class InputParser {
 
  public String scanAction(){
   System.out.println("Choose your action: Attack, Defend, Eat or Drink ");
-
-return sc.nextLine();
+ return sc.nextLine();
  }
  public void closeScanner(){
    sc.close();
  }
-
-
 
 }

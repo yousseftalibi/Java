@@ -1,10 +1,10 @@
 package com.isep.rpg;
 
- class Boss extends Enemy{
-    public Boss(){
-        super.lifePoints=7;
-
+class Boss extends Enemy {
+    public Boss() {
+        lifePoints = 7;
+        armor = 8;
+        weaponDamage = 9;
     }
-
 
 }
