@@ -17,17 +17,14 @@ public class InputParser {
   }
 
   public int scanHeroNumber(){
-   System.out.println(" please enter the number of heroes: ");
+   System.out.println("Please enter the number of heroes: ");
    int number = sc.nextInt();
    sc.nextLine();
    return number;
   }
- public String scanConsumable(){
+ public String scanFood(){
   System.out.println("Enter name of food you wish to consume: ");
 
-  if(!sc.nextLine().matches("[a-zA-Z]+")){
-   System.out.println("Food name must contain caracters only");
-  }
   return sc.nextLine();
  }
 
